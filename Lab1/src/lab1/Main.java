@@ -9,11 +9,18 @@ public class Main {
 			disArr[j] = args[j].toLowerCase();
 		}
 
+		SmallToGrant sf = new SmallToGrant();
 		int i;
-		for (i = 0; i < disArr.length; i++)
-			if (disArr[i].equals("small") || disArr[i].equals("medium")
-					|| disArr[i].equals("large") || disArr[i].equals("grant"))
-				break;
+		
+		ok:
+		for (i = 0; i < disArr.length; i++){
+			for(int j = 0; j < sf.getSizes().length; j++){
+				if(disArr[i].equals(sf.getSizes()[j])){
+					break ok;
+				}
+			}
+		}
+		
 
 		if (i >= disArr.length) {
 			System.out.println("Must set a size!");
@@ -29,61 +36,43 @@ public class Main {
 
 		Beverage order;
 		if (beveStr.equals("espresso")) {
-			order = new CoffeeBeverage();
-			order = new Espresso();
-			((CoffeeBeverage) order).setSize(disArr[i]);
-		} else if (beveStr.equals("decaf")) {
-			order = new CoffeeBeverage();
-			order = new Decaf();
-			((CoffeeBeverage) order).setSize(disArr[i]);
+			order = new Espresso(disArr[i],sf);
 		} else if (beveStr.equals("houseblend")) {
-			order = new CoffeeBeverage();
-			order = new HouseBlend();
-			((CoffeeBeverage) order).setSize(disArr[i]);
+			order = new HouseBlend(disArr[i],sf);
+		} else if (beveStr.equals("decaf")) { 
+			order = new Decaf(disArr[i],sf);  
 		} else if (beveStr.equals("mocha")) {
-			order = new Espresso();
-			((CoffeeBeverage) order).setSize(disArr[i]);
+			order = new Espresso(disArr[i],sf);
 			order = new Chocolate(order);
 		} else if (beveStr.equals("latte")) {
-			order = new Espresso();
-			((CoffeeBeverage) order).setSize(disArr[i]);
+			order = new Espresso(disArr[i],sf);
 			order = new Milk(order);
 		} else if (beveStr.equals("cappuccino")) {
-			order = new Espresso();
-			((CoffeeBeverage) order).setSize(disArr[i]);
+			order = new Espresso(disArr[i],sf);
 			order = new WhipCream(order);
-		} else if (beveStr.equals("decaf mocha")) {
-			order = new Decaf();
-			((CoffeeBeverage) order).setSize(disArr[i]);
-			order = new Chocolate(order);
-		} else if (beveStr.equals("decaf latte")){
-			order = new Decaf();
-			((CoffeeBeverage) order).setSize(disArr[i]);
-			order = new Milk(order);
-		} else if (beveStr.equals("decaf cappuccino")){
-			order = new Decaf();
-			((CoffeeBeverage) order).setSize(disArr[i]);
-			order = new WhipCream(order);
+		} else if (beveStr.equals("decaf mocha")) { 
+			order = new Decaf(disArr[i],sf); 
+			order = new Chocolate(order); 
+		} else if (beveStr.equals("decaf latte")){ 
+			order = new Decaf(disArr[i],sf); 
+			order = new Milk(order); 
+		} else if (beveStr.equals("decaf cappuccino")){ 
+			order = new Decaf(disArr[i],sf); 
+			order = new WhipCream(order); 
 		} else if (beveStr.equals("green tea")) {
-			order = new GreenTea();
-			((TeaBeverage) order).setSize(disArr[i]);
+			order = new GreenTea(disArr[i],sf);
 		} else if (beveStr.equals("red tea")) {
-			order = new RedTea();
-			((TeaBeverage) order).setSize(disArr[i]);
+			order = new RedTea(disArr[i],sf);
 		} else if (beveStr.equals("white tea")) {
-			order = new WhiteTea();
-			((TeaBeverage) order).setSize(disArr[i]);
+			order = new WhiteTea(disArr[i],sf);
 		} else if (beveStr.equals("flower tea")) {
-			order = new GreenTea();
-			((TeaBeverage) order).setSize(disArr[i]);
+			order = new GreenTea(disArr[i],sf);
 			order = new Jasmine(order);
 		} else if (beveStr.equals("ginger tea")) {
-			order = new GreenTea();
-			((TeaBeverage) order).setSize(disArr[i]);
+			order = new GreenTea(disArr[i],sf);
 			order = new Ginger(order);
 		} else if (beveStr.equals("tea latte")) {
-			order = new RedTea();
-			((TeaBeverage) order).setSize(disArr[i]);
+			order = new RedTea(disArr[i],sf);
 			order = new Milk(order);
 		} else {
 			System.out.println("Illegal input: " + beveStr);
@@ -107,19 +96,9 @@ public class Main {
 			}
 		}
 
-		/**
-		 * How do I get the description of each order instead of doing this
-		 * stupid thing forever (except for printing the args)?
-		 */
-		if (order instanceof BeverageWithIngredient) {
-			((BeverageWithIngredient) order).getDescription();
-		} else if (order instanceof Espresso) {
-			((Espresso) order).getDescription();
-		} 
-		// and so on...
 
 		DecimalFormat df = new DecimalFormat(".0");
 		System.out.println("The total cost of your order is: "
-				+ df.format(order.cost()));
+				+ df.format(order.cost()) + "\nThe order is " +order.getDescription());
 	}
 }

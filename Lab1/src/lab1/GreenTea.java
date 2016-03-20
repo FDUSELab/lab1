@@ -3,11 +3,12 @@ package lab1;
 public class GreenTea extends TeaBeverage {
 	private String description;
 	
-	public GreenTea() {
+	public GreenTea(String size, SizeFactor sizeFactor) {
+		super(size,sizeFactor);
 		description = "Green Tea";
 	}
 	
-	public String getDiscription() {
+	public String getDescription() {
 		return description;
 	}
 

@@ -3,7 +3,8 @@ package lab1;
 public class Espresso extends CoffeeBeverage {
 	private String description;
 	
-	public Espresso() {
+	public Espresso(String size, SizeFactor sizeFactor) {
+		super(size,sizeFactor);
 		description = "Esspresso";
 	}
 	
