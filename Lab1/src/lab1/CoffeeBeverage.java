@@ -1,17 +1,19 @@
 package lab1;
 
-public class CoffeeBeverage extends Beverage {
+public abstract class CoffeeBeverage implements Beverage {
 	private String size;
-
-	public CoffeeBeverage() {
-		super.sizeFactor = new CoffeeBased();
+	private SizeFactor sizeFactor;
+	
+	public CoffeeBeverage(String size, SizeFactor sizeFactor) {
+		this.size = size;
+		this.sizeFactor = sizeFactor;
 	}
-
+	
 	public void setSize(String size) {
 		this.size = size;
 	}
-
+	
 	public double cost() {
-		return super.cost() + super.sizeFactor.sizeCost(size);
+		return sizeFactor.sizeCost(size, this);
 	}
 }

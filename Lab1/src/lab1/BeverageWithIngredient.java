@@ -1,6 +1,6 @@
 package lab1;
 
-public class BeverageWithIngredient extends Beverage {
+public abstract class BeverageWithIngredient implements Beverage {
 	private Beverage drink;
 	protected String description;
 
@@ -8,8 +8,12 @@ public class BeverageWithIngredient extends Beverage {
 		this.drink = drink;
 	}
 	
-	public String getDescription(){
+	public String getDescription() {
 		return description;
+	}
+	
+	public void setDescription(String str) {
+		description = str;
 	}
 	
 	public double cost() {

@@ -3,7 +3,8 @@ package lab1;
 public class WhiteTea extends TeaBeverage {
 	private String description;
 
-	public WhiteTea() {
+	public WhiteTea(String size, SizeFactor sizeFactor) {
+		super(size,sizeFactor);
 		description = "White Tea";
 	}
 	

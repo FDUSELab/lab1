@@ -1,5 +1,5 @@
 package lab1;
 
-public interface SizeFactor {
-	public double sizeCost(String size);
+public abstract class SizeFactor {
+	public abstract double sizeCost(String size, Beverage drink);
 }

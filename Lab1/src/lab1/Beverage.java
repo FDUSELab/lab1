@@ -1,9 +1,5 @@
 package lab1;
 
-public class Beverage {
-	protected SizeFactor sizeFactor;
-
-	public double cost() {
-		return 0;
-	}
+public interface Beverage{
+	public double cost();
 }
