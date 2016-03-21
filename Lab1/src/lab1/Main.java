@@ -14,8 +14,8 @@ public class Main {
 		
 		ok:
 		for (i = 0; i < disArr.length; i++){
-			for(int j = 0; j < sf.getSizes().length; j++){
-				if(disArr[i].equals(sf.getSizes()[j])){
+			for(int j = 0; j < sf.getAllSizes().length; j++){
+				if(disArr[i].equals(sf.getAllSizes()[j])){
 					break ok;
 				}
 			}

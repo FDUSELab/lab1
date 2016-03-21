@@ -3,7 +3,8 @@ package lab1;
 public class SmallToLarge extends SizeFactor{
 	public String[] sizes = {"small", "medium", "large"};
 	
-	public double sizeCost(String size, Beverage drink) {
+	public double sizeCost(BeverageBased drink) {
+		String size = drink.getSize();
 		if (size.toLowerCase().equals("small")) {
 			if (drink instanceof CoffeeBeverage) {
 				return 0.4;
@@ -25,7 +26,8 @@ public class SmallToLarge extends SizeFactor{
 		}
 	}
 	
-	public String[] getSizes(){
+	public String[] getAllSizes(){
 		return sizes;
 	}
+
 }
