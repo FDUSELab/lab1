@@ -25,7 +25,7 @@ public class Main {
 			}
 		}
 
-		SmallToGrant sf = new SmallToGrant();
+		SmallToGrand sf = new SmallToGrand();
 		int l;//l:一杯饮料的arg数目
 
 		for (i = 0;i < num;i++) { //i:杯数

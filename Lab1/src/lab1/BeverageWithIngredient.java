@@ -12,10 +12,6 @@ public abstract class BeverageWithIngredient implements Beverage {
 		return description;
 	}
 	
-	public void setDescription(String str) {
-		description = str;
-	}
-	
 	public double cost() {
 		return drink.cost();
 	}
