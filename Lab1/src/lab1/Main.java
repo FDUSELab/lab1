@@ -31,8 +31,8 @@ public class Main {
 		for (i = 0;i < num;i++) { //i:杯数
 			ok:
 			for (l = 0; l < disArr.get(i).size(); l++){
-				for(int j = 0; j < sf.getSizes().length; j++){
-					if(disArr.get(i).get(l).equals(sf.getSizes()[j])){
+				for(int j = 0; j < sf.getAllSizes().length; j++){
+					if(disArr.get(i).get(l).equals(sf.getAllSizes()[j])){
 						break ok;
 					}
 				}
